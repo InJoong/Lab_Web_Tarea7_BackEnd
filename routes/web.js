@@ -5,10 +5,12 @@ router.get('/', (req, res) => {
     res.send({ status: 'ok'})
 });
 
-router.post('/create', orderController.store);
+router.get('/pedido', orderController.getAll);
 
-router.delete('/delete', orderController.delete)
+router.post('/pedido', orderController.store);
 
-router.put('/update', orderController.update)
+router.delete('/pedido', orderController.delete)
+
+router.put('/pedido', orderController.update)
 
 module.exports = router;

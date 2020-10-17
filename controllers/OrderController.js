@@ -1,6 +1,12 @@
 const Order = require('../models/Order');
 const EventTable = require('../models/EventTable');
 
+exports.getAll = (req, res) => {
+  Order.all().then((data) => {
+      res.json(data);
+  })
+}
+
 exports.store = (req, res) => {
   let order = { description: req.body.description};
   
