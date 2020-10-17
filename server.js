@@ -1,6 +1,7 @@
 // Imports
 const express = require('express');
 const webRoutes = require('./routes/web');
+const cors = require('cors');
 
 // Express app creation
 const app = express();
@@ -20,6 +21,7 @@ const hbs = exphbs.create({
 app.engine(extNameHbs, hbs.engine);
 app.set('view engine', extNameHbs);
 app.use(express.static('public'))
+app.use(cors());
 
 // Receive parameters from the Form requests
 app.use(express.urlencoded({ extended: true }))
