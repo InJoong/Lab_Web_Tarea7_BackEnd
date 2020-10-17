@@ -22,7 +22,7 @@ exports.update = (req, res) => {
   let toStatus = req.body.to_status;
 
   if(!validateStatus(toStatus)) {
-    res.sednStatus(418);
+    res.sendStatus(418);
   }
 
   Order.find(orderId).then((order) => {
@@ -33,7 +33,7 @@ exports.update = (req, res) => {
     }
 
     if(!validateStatusPosition(order.status, toStatus)) {
-      res.sednStatus(419);
+      return res.sendStatus(419);
     }
 
     EventTable.create(event).then((id) => {
