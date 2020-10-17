@@ -19,7 +19,6 @@ const hbs = exphbs.create({
 });
 app.engine(extNameHbs, hbs.engine);
 app.set('view engine', extNameHbs);
-app.use(express.static('public'))
 
 // Receive parameters from the Form requests
 app.use(express.urlencoded({ extended: true }))

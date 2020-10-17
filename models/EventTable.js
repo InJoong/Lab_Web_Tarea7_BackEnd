@@ -1,5 +1,11 @@
 const knex = require('../database/connection');
 
+exports.all = () => {
+    return knex
+      .select('*')
+      .from('event_table');
+}
+
 exports.create = (event) => {
     return knex('event_table')
             .insert({
