@@ -32,6 +32,10 @@ exports.update = (req, res) => {
       to_status: toStatus,
     }
 
+    if(!validateStatusPosition(order.status, toStatus)) {
+      res.sednStatus(419);
+    }
+
     EventTable.create(event).then((id) => {
       console.log('Event created with id: ', id);
     });
@@ -67,4 +71,12 @@ function validateStatus(toStatus) {
     default:
       return false
   }
+}
+
+function validateStatusPosition(from, to) {
+  if(from == Order.status.ENTREGA_COMPLETA || to == Order.status.SALIDA_DE_PLANTA){
+    return false;
+  }
+
+  return true;
 }
